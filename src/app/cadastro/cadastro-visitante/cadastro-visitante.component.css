@@ -1,0 +1,63 @@
+/* Toolbar styles */
+.custom-toolbar {
+  background-color: #70c99d;
+  color: white;
+}
+
+.menu-icon {
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+/* Flex container for rows */
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Flex items for specific widths */
+.flex-item {
+  flex: 1;
+}
+
+.flex-20 {
+  flex: 0 0 20%;
+}
+
+.flex-40 {
+  flex: 0 0 40%;
+}
+
+.flex-50 {
+  flex: 0 0 50%;
+}
+
+.flex-15 {
+  flex: 0 0 15%;
+}
+
+/* Photo preview styles */
+.photo-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-preview img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 8px;
+}
+.menu-icon {
+  cursor: pointer;
+  margin-right: 16px;
+  width: 30px; /* Largura do ícone */
+  height: 30px; /* Altura do ícone */
+}

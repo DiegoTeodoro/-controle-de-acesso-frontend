@@ -1,0 +1,89 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+  <img src="assets/menu.svg" alt="Menu" class="menu-icon" />
+</mat-toolbar>
+
+
+<h2 style="margin: 15px;">Cadastro de Acesso</h2>
+<form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" style="margin: 15px;">
+  <!-- Nome, RG e Foto na mesma linha -->
+  <div class="row">
+    <mat-form-field appearance="fill" class="flex-item flex-40">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" />
+      <mat-error *ngIf="cadastroForm.get('nome')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="flex-item flex-20">
+      <mat-label>RG</mat-label>
+      <input matInput formControlName="rg" />
+      <mat-error *ngIf="cadastroForm.get('rg')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <div class="photo-container flex-item flex-40">
+      <label for="photo">Foto</label>
+      <div class="photo-preview">
+        <img *ngIf="fotoPreview" [src]="fotoPreview" alt="Pré-visualização da foto" />
+      </div>
+      <button mat-raised-button color="primary" type="button" (click)="abrirCamera()">Tirar Foto</button>
+      <video #videoElement autoplay style="display: none;"></video>
+      <canvas #canvasElement style="display: none;"></canvas>
+    </div>
+  </div>
+
+  <!-- Veículo e Placa na mesma linha -->
+  <div class="row">
+    <mat-form-field appearance="fill" class="flex-item flex-20">
+      <mat-label>Veículo</mat-label>
+      <mat-select formControlName="veiculo">
+        <mat-option *ngFor="let tipo of tiposVeiculo" [value]="tipo.value">{{ tipo.label }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="cadastroForm.get('veiculo')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="flex-item flex-20">
+      <mat-label>Placa</mat-label>
+      <input matInput formControlName="placa" />
+      <mat-error *ngIf="cadastroForm.get('placa')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Data, Hora de Entrada e Hora de Saída na mesma linha -->
+  <div class="row">
+    <mat-form-field appearance="fill" class="flex-item flex-15">
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dataDoDia" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="cadastroForm.get('dataDoDia')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="flex-item flex-15">
+      <mat-label>Hora de Entrada</mat-label>
+      <input matInput type="time" formControlName="entrada" />
+      <mat-error *ngIf="cadastroForm.get('entrada')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="flex-item flex-15">
+      <mat-label>Hora de Saída</mat-label>
+      <input matInput type="time" formControlName="saida" />
+      <mat-error *ngIf="cadastroForm.get('saida')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Endereço e Empresa na mesma linha -->
+  <div class="row">
+    <mat-form-field appearance="fill" class="flex-item flex-50">
+      <mat-label>Endereço</mat-label>
+      <input matInput formControlName="endereco" />
+      <mat-error *ngIf="cadastroForm.get('endereco')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="flex-item flex-20">
+      <mat-label>Empresa</mat-label>
+      <input matInput formControlName="empresa" />
+      <mat-error *ngIf="cadastroForm.get('empresa')?.invalid">Campo obrigatório</mat-error>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit">Salvar</button>
+</form>
