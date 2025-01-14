@@ -7,6 +7,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./cadastro-visitante.component.css']
 })
 export class CadastroVisitanteComponent implements OnInit {
+tirarFoto() {
+throw new Error('Method not implemented.');
+}
+fotoUrl: any;
 onSubmit() {
 throw new Error('Method not implemented.');
 }
